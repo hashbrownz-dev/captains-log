@@ -23,7 +23,18 @@ const createLog = async (req, res) => {
     }
 }
 
-// GET LOG
+// GET ALL LOGS
+
+const indexLogs = async (req, res) => {
+    try {
+        const logs = await Log.find({});
+        res.render('Index', { logs });
+    } catch (error) {
+        res.json(error);
+    }
+}
+
+// GET LOG BY ID
 
 // EDIT LOG
 
@@ -32,5 +43,6 @@ const createLog = async (req, res) => {
 // DELETE LOG
 
 module.exports = {
-    createLog
+    createLog,
+    indexLogs
 }

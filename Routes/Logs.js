@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createLog } = require('../Controllers/logController');
+const { createLog, indexLogs } = require('../Controllers/logController');
 
 // ADD MIDDLEWARE HERE
 
@@ -14,9 +14,7 @@ const { createLog } = require('../Controllers/logController');
     ACTION : Display HomePage
 */
 
-router.get('/', (req, res) => {
-    res.render('Index');
-})
+router.get('/', indexLogs)
 
 // NEW
 /*
