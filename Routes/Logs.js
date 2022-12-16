@@ -1,5 +1,6 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
+const { createLog } = require('../Controllers/logController');
 
 // ADD MIDDLEWARE HERE
 
@@ -61,15 +62,7 @@ router.put('/:id', (req, res) => {
     ACTION : Create a document and add it to our database with the create(), redirect to SHOW page
 */
 
-router.post('/', (req, res) => {
-    const { title, entry, shipIsBroken } = req.body;
-    const log = {
-        title,
-        entry,
-        shipIsBroken : !shipIsBroken ? false : true
-    }
-    res.send(log);
-})
+router.post('/', createLog)
 
 // EDIT
 /*
