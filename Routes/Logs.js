@@ -14,7 +14,7 @@ const router = express.Router()
 */
 
 router.get('/', (req, res) => {
-    res.send('Hello World');
+    res.render('Index');
 })
 
 // NEW
@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 */
 
 router.get('/new', (req, res) => {
-    res.send('New');
+    res.render('New');
 })
 
 // DELETE
@@ -74,7 +74,7 @@ router.post('/', (req, res) => {
 */
 
 router.get('/edit', (req, res) => {
-    res.send('Edit');
+    res.render('Edit')
 })
 
 // SHOW
@@ -86,7 +86,7 @@ router.get('/edit', (req, res) => {
 */
 
 router.get('/:id', (req, res) => {
-    res.send(`Show: ${req.params.id}`);
+    res.render('Show')
 })
 
 // EXPORT
