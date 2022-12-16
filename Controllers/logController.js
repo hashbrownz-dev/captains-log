@@ -23,7 +23,7 @@ const createLog = async (req, res) => {
     }
 }
 
-// GET ALL LOGS
+// INDEX LOGS
 
 const indexLogs = async (req, res) => {
     try {
@@ -40,9 +40,19 @@ const indexLogs = async (req, res) => {
 
 // SHOW LOG
 
+const showLog = async (req, res) => {
+    try{
+        const log = await Log.findById(req.params.id);
+        res.render('Show', { log });
+    } catch (error) {
+        res.json(error);
+    }
+}
+
 // DELETE LOG
 
 module.exports = {
     createLog,
-    indexLogs
+    indexLogs,
+    showLog
 }

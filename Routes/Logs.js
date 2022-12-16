@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createLog, indexLogs } = require('../Controllers/logController');
+const { createLog, indexLogs, showLog } = require('../Controllers/logController');
 
 // ADD MIDDLEWARE HERE
 
@@ -82,9 +82,7 @@ router.get('/edit', (req, res) => {
     Action : Retrieve a document from our database with findById() and render it using the Show View
 */
 
-router.get('/:id', (req, res) => {
-    res.render('Show')
-})
+router.get('/:id', showLog)
 
 // EXPORT
 
