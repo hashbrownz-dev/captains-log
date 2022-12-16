@@ -62,7 +62,13 @@ router.put('/:id', (req, res) => {
 */
 
 router.post('/', (req, res) => {
-    res.send(req.body);
+    const { title, entry, shipIsBroken } = req.body;
+    const log = {
+        title,
+        entry,
+        shipIsBroken : !shipIsBroken ? false : true
+    }
+    res.send(log);
 })
 
 // EDIT
