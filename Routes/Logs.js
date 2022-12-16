@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createLog, indexLogs, showLog } = require('../Controllers/logController');
+const { createLog, indexLogs, showLog, deleteLog } = require('../Controllers/logController');
 
 // ADD MIDDLEWARE HERE
 
@@ -36,9 +36,7 @@ router.get('/new', (req, res) => {
     ACTION : Delete an item from our database with findByIdAndRemove(), redirect to our index page
 */
 
-router.delete('/:id', (req, res) => {
-    res.send(req.body + req.params.id);
-})
+router.delete('/:id', deleteLog);
 
 // UPDATE
 /*
@@ -70,7 +68,7 @@ router.post('/', createLog)
     Action : Display a form for editing a log
 */
 
-router.get('/edit', (req, res) => {
+router.get('/:id/edit', (req, res) => {
     res.render('Edit')
 })
 

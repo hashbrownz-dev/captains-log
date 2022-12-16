@@ -51,8 +51,19 @@ const showLog = async (req, res) => {
 
 // DELETE LOG
 
+const deleteLog = (req, res) => {
+    Log.findByIdAndDelete(req.params.id)
+        .then( () => {
+            res.redirect('/logs')
+        })
+        .catch( error => {
+            res.json(error)
+        })
+}
+
 module.exports = {
     createLog,
     indexLogs,
-    showLog
+    showLog,
+    deleteLog
 }

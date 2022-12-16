@@ -9,10 +9,13 @@ class Index extends React.Component{
                 <h1>Index</h1>
                 <a href="/logs/new">Create Log</a>
                 <ul>
-                    {logs.map( log => {
+                    {logs.map( (log, i) => {
                         return(
-                            <li>
-                                <a href={`/logs/${log.id}`}>{log.title}</a>
+                            <li key={i}>
+                                <a href={`/logs/${log.id}`}>{log.title}</a><br />
+                                <form action={`/logs/${log.id}/?_method=DELETE`} method='POST'>
+                                    <input type="submit" value="DELETE" />
+                                </form>
                             </li>
                         )
                     })}
