@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createLog, indexLogs, showLog, deleteLog } = require('../Controllers/logController');
+const { createLog, indexLogs, showLog, deleteLog, editLog, updateLog } = require('../Controllers/logController');
 
 // ADD MIDDLEWARE HERE
 
@@ -46,9 +46,7 @@ router.delete('/:id', deleteLog);
     ACTION : Update a document in our database with findByIdAndUpdate(), redirect to SHOW page
 */
 
-router.put('/:id', (req, res) => {
-    res.send(req.body + req.params.id);
-})
+router.put('/:id', updateLog)
 
 // CREATE
 /*
@@ -68,9 +66,7 @@ router.post('/', createLog)
     Action : Display a form for editing a log
 */
 
-router.get('/:id/edit', (req, res) => {
-    res.render('Edit')
-})
+router.get('/:id/edit', editLog)
 
 // SHOW
 /*

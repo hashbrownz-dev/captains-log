@@ -38,6 +38,15 @@ const indexLogs = async (req, res) => {
 
 // EDIT LOG
 
+const editLog = async (req, res) => {
+    try {
+        const log = await Log.findById(req.params.id);
+        res.render('Edit', { log });
+    } catch (error) {
+        res.json(error);
+    }
+}
+
 // SHOW LOG
 
 const showLog = async (req, res) => {
@@ -61,9 +70,28 @@ const deleteLog = (req, res) => {
         })
 }
 
+// UPDATE LOG
+
+const updateLog = async (req, res) => {
+    const { title, entry, shipIsBroken } = req.body;
+    const newLog = {
+        title,
+        entry,
+        shipIsBroken : !shipIsBroken ? false : true
+    }
+    try {
+        await Log.findByIdAndUpdate(req.params.id, newLog, {new:true});
+        res.redirect('/logs');
+    } catch (error) {
+        res.json(error);
+    }
+}
+
 module.exports = {
     createLog,
     indexLogs,
     showLog,
-    deleteLog
+    deleteLog,
+    editLog,
+    updateLog
 }
